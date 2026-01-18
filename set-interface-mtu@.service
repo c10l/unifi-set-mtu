@@ -1,0 +1,13 @@
+[Unit]
+Description=Set MTU on network interface (%i)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/set-interface-mtu.sh %i
+Restart=on-failure
+StartLimitIntervalSec=5
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
